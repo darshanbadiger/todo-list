@@ -29,6 +29,9 @@ function App() {
   return (
     <div className="bg-sky-900 h-screen p-3">
       <div className="mx-auto max-w-[750px] min-h-[450px] shadow-xl bg-white mt-5 rounded">
+        <h1 className="text-red-500 text-center text-[24px] font-bold pt-3">
+          To-Do Application
+        </h1>
         <Task handler={addtodo} />
         <TaskList data={todos} removehandler={removetodo} />
       </div>

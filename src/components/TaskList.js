@@ -15,7 +15,9 @@ const TaskList = (props) => {
   });
   return (
     <div className="p-3">
-      <h1>Task Lists</h1>
+      <h1 className="text-violet-900 text-center text-[20px] font-bold">
+        Pending Tasks
+      </h1>
       {items}
     </div>
   );
