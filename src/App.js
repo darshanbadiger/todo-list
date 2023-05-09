@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Task from "./components/Task";
+import TaskList from "./components/TaskList";
 
 function App() {
+  const [todos, setodos] = useState([]);
+
+  const addtodo = (item) => {
+    // console.log(item);
+    setodos([
+      ...todos,
+      {
+        item,
+        time: new Date().toLocaleTimeString(),
+      },
+    ]);
+  };
+
+  const removetodo = (id) => {
+    // console.log(id);
+    const newtodo = todos.filter((data1, index) => {
+      if (index !== id) return true;
+      else return false;
+    });
+    setodos(newtodo);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-sky-900 h-screen p-3">
+      <div className="mx-auto max-w-[750px] min-h-[450px] shadow-xl bg-white mt-5 rounded">
+        <Task handler={addtodo} />
+        <TaskList data={todos} removehandler={removetodo} />
+      </div>
     </div>
   );
 }
